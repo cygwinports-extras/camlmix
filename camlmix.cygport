@@ -1,0 +1,25 @@
+inherit ocaml
+
+NAME="camlmix"
+VERSION=1.3.0
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="OCaml generic preprocessor"
+DESCRIPTION="Camlmix is a generic preprocessor which converts text with
+embedded OCaml into an OCaml program with embedded text. It produces text
+documents from one or several templates. Camlmix is not a Camlp4 syntax
+extension."
+HOMEPAGE="http://martin.jambon.free.fr/camlmix/"
+SRC_URI="http://martin.jambon.free.fr/camlmix/${NAME}-${VERSION}.tar.bz2"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake
+}
+
+src_install() {
+	cd ${B}
+	dodir /usr/bin
+	cygmake install PREFIX=${D}/usr
+}
